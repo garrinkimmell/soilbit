@@ -9,21 +9,19 @@ from pymongo import MongoClient
 
 
 
-app = Flask(__name__)
+app = Flask(__name__,static_path='')
 app.secret_key = 'This is really unique and secret'
 app.config.from_object('config.Config')
 
 
 connection = MongoClient(app.config['MONGO_URL'], app.config['MONGO_PORT'])
-db = connection['soilbit']
+db = connection['soil bit']
 db.authenticate(app.config['MONGO_USER'],app.config['MONGO_PWD'])
 
 
-app.add_url_rule('/favicon.ico',
-                 redirect_to=url_for('static', filename='favicon.ico'))
-
-app.add_url_rule('/',
-                 redirect_to=url_for('static', filename='index.html'))
+@app.route('/')
+def root():
+    return app.send_static_file('index.html')
 
 # def hello_person():
 #     return """
