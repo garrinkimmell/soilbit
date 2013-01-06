@@ -15,7 +15,7 @@ app.config.from_object('config.Config')
 
 
 connection = MongoClient(app.config['MONGO_URL'], app.config['MONGO_PORT'])
-db = connection['soil bit']
+db = connection['soilbit']
 db.authenticate(app.config['MONGO_USER'],app.config['MONGO_PWD'])
 
 
