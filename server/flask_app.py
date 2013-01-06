@@ -1,5 +1,5 @@
 
-from flask import Flask, request, url_for, render_template
+from flask import Flask, request, url_for, render_template, send_from_static
 import random
 import config
 
@@ -20,7 +20,8 @@ db.authenticate(app.config['MONGO_USER'],app.config['MONGO_PWD'])
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return send_from_static('static','index.html')
+
 
 
 def hello_person():
