@@ -19,15 +19,18 @@ db = connection['soilbit']
 db.authenticate(app.config['MONGO_USER'],app.config['MONGO_PWD'])
 
 
-@app.route('/')
-def index():
-    return send_from_directory('static','index.html')
+app.add_url_rule('/favicon.ico',
+                 redirect_to=url_for('static', filename='favicon.ico'))
+
+app.add_url_rule('/',
+                 redirect_to=url_for('static', filename='index.html'))
 
 # def hello_person():
 #     return """
 #     <p>Who do you want me to say "Hi" to?</p>
 #     <form method="POST" action="%s"><input name="person" /><input type="submit" value="Go!" /></form>
 #     """ % (url_for('greet'),)
+
 
 
 @app.route('/greet', methods=['POST'])
