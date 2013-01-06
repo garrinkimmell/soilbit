@@ -23,13 +23,12 @@ db.authenticate(app.config['MONGO_USER'],app.config['MONGO_PWD'])
 def index():
     return send_from_directory('static','index.html')
 
+# def hello_person():
+#     return """
+#     <p>Who do you want me to say "Hi" to?</p>
+#     <form method="POST" action="%s"><input name="person" /><input type="submit" value="Go!" /></form>
+#     """ % (url_for('greet'),)
 
-
-def hello_person():
-    return """
-    <p>Who do you want me to say "Hi" to?</p>
-    <form method="POST" action="%s"><input name="person" /><input type="submit" value="Go!" /></form>
-    """ % (url_for('greet'),)
 
 @app.route('/greet', methods=['POST'])
 def greet():
