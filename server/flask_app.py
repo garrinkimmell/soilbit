@@ -26,4 +26,4 @@ def greet():
     return """
     <p>%s, %s!: %s</p>
     <p><a href="%s">Back to start</a></p>
-    """ % (greeting, request.form["person"], url_for('hello_person'), app.config['MONGO_PORT'])
+    """ % (greeting, request.form["person"],  app.config['MONGO_PORT'], url_for('hello_person'))
