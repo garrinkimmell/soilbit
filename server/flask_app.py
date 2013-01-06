@@ -10,7 +10,7 @@ import config
 
 app = Flask(__name__)
 app.secret_key = 'This is really unique and secret'
-app.config.from_object('config.Config')
+app.config.from_object('config')
 
 
 @app.route('/')
