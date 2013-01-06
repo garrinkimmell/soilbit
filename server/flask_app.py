@@ -1,5 +1,5 @@
 
-from flask import Flask, request, url_for, render_template, send_from_static
+from flask import Flask, request, url_for, render_template, send_from_directory
 import random
 import config
 
@@ -20,7 +20,7 @@ db.authenticate(app.config['MONGO_USER'],app.config['MONGO_PWD'])
 
 @app.route('/')
 def index():
-    return send_from_static('static','index.html')
+    return send_from_directory('static','index.html')
 
 
 
