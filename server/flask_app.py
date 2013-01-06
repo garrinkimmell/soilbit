@@ -1,5 +1,5 @@
 
-from flask import Flask, request, url_for
+from flask import Flask, request, url_for, render_template
 import random
 import config
 
@@ -13,7 +13,16 @@ app.secret_key = 'This is really unique and secret'
 app.config.from_object('config.Config')
 
 
+connection = MongoClient(app.config['MONGO_URL'], app.config['MONGO_PORT'])
+db = connection['soilbit']
+db.authenticate(app.config['MONGO_USER'],app.config['MONGO_PWD'])
+
+
 @app.route('/')
+def index():
+    return render_template('index.html')
+
+
 def hello_person():
     return """
     <p>Who do you want me to say "Hi" to?</p>
