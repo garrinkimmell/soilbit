@@ -23,6 +23,6 @@ def hello_person():
 def greet():
     greeting = random.choice(["Hiya", "Hallo", "Hola", "Ola", "Salut", "Privet", "Konnichiwa", "Ni hao"])
     return """
-    <p>%s, %s!</p>
+    <p>%s, %s!: %s</p>
     <p><a href="%s">Back to start</a></p>
-    """ % (greeting, request.form["person"], url_for('hello_person'))
+    """ % (greeting, request.form["person"], url_for('hello_person'), app.config.MONGO_PORT)
