@@ -1,6 +1,7 @@
 
 from flask import Flask, request, url_for
 import random
+import config
 
 
 # MongoLab stuff
