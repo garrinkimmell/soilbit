@@ -56,6 +56,72 @@ Hello, there.
 			drawnItems.addLayer(e.marker);
 		});
 		map.addLayer(drawnItems);
+
+/*
+
+momwest = drawnItems._layers['60']
+
+
+
+getinfo = function(layer) {
+   center = layer.getBounds().getCenter();
+   stepY = new L.LatLng(center.lat + 1,center.lng);
+   stepX = new L.LatLng(center.lat,center.lng + 1);
+   distY = center.distanceTo(stepY);
+   distX = center.distanceTo(stepX);
+
+   // 1 acres is 4046 square meters
+   size = 4046 * 2.5; // (2.5 acres is grid size)
+   side = Math.sqrt(size);
+
+   strideY = side / distY;
+   strideX = side / distX;
+}
+
+
+// Adapted from http://code.google.com/p/geojs/source/browse/trunk/src/path.js
+containsPoint = function(coords,point) {
+  var oddNodes = false;
+  var y = point.lat;
+  var x = point.lng;
+  for (var i = 0; i < coords.length; i++) {
+    var j = (i + 1) % coords.length;
+    if (((coords[i].lat < y && coords[j].lat >= y) ||
+         (coords[j].lat < y && coords[i].lat >= y)) &&
+        (coords[i].lng + (y - coords[i].lat) /
+            (coords[j].lat - coords[i].lat) *
+            (coords[j].lng - coords[i].lng) < x)) {
+      oddNodes = !oddNodes;
+    }
+  }
+  
+  return oddNodes;
+};
+
+
+
+gengrid = function (layer) {
+  var bounds = layer.getBounds();
+  var pts = [];
+  for (var x = bounds.getSouthWest().lng + 0.00000001; x < bounds.getNorthEast().lng; x += strideX) {
+    for (var y = bounds.getSouthWest().lat + 0.0000001; y < bounds.getNorthEast().lat; y += strideY) {
+        pt = new L.LatLng(y,x)                            
+        if (containsPoint(layer.getLatLngs(),pt)) {
+           pts.push(new L.LatLng(y,x));                                            
+        }
+    }
+  }
+  return pts;
+}
+
+
+
+
+
+
+
+
+*/
 		
 	</script>
 
