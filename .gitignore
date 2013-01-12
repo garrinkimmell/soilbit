@@ -35,3 +35,5 @@ nosetests.xml
 .pydevproject
 /.DS_Store
 /server/.DS_Store
+/config.py
+/server/config.py
