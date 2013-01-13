@@ -37,3 +37,4 @@ nosetests.xml
 /server/.DS_Store
 /config.py
 /server/config.py
+/server/app/config.py

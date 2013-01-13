@@ -1,0 +1,55 @@
+{% extends "base-authenticated.html" %}
+{% block htmlincludes %}
+  <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.4.4/leaflet.css" />
+  <link rel="stylesheet" href="/static/css/leaflet.draw.css" />
+
+  <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+  <script src="http://cdn.leafletjs.com/leaflet-0.4.4/leaflet.js"></script>
+  <script src="/static/js/leaflet.draw.js"></script>
+  <script src="/static/js/Bing.js"></script>
+{% endblock %}
+
+{% block content %}
+<div>
+  <div id="instruction-step">
+  Creating a field is a 3 step process:
+  <ol>
+    <li>Give your field a name. </li>
+    <p>Choose whatever name you typically refer to the field as.</p>
+    <li>Draw the boundaries for your field</li>
+    <p>You'll draw a rough outline of the field that you want to
+    sample. We'll provide you with a map and some aerial imagery to
+    help draw the field boundaries. Don't worry about getting this too
+    exact -- it's mostly just to get the rough extents of the field to
+    construct a sampling grid. Later, when you're collecting samples
+    you'll also collect a precise field boundary that we'll use when
+    creating the fertilizer prescriptions.</p>
+    <li>Create a soil sampling grid for the field</li>
+    <p>We'll create an initial grid with the resolution of your
+    choosing. Before we save the grid, you'll be able to adjust the
+    generated sample points.</p>
+  </ol>
+  <a href="javascript:controller.nextStep()">Get Started<a>
+  </div>
+  <div id="name-step">
+    <span>Field Name:<span>
+    <span><form><input id="field-name" type="text" value="Unknown"></input></form></span>
+    <a href="javascript:controller.nextStep()">Create Bounds</a>
+  </div>
+  <div id="bounds-step">
+    <a href="javascript:clearBounds()">Clear Polygons</a>
+    <a href="javascript:controller.nextStep()">Create Grid</a>
+  </div>
+  <div id="grid-step">
+    This is where you define the grid.
+  </div>
+
+  <div id="map"  style="width: 80%; height: 80%;"></div>
+  <script src="/static/js/gridding.js"></script>
+  <script>
+    controller.init();
+  </script>
+
+
+</div>
+{% endblock %}

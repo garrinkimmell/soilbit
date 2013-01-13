@@ -1,0 +1,16 @@
+<html>
+    <head>
+    <title>Soilbit: Cute tag line</title>
+    {% block htmlincludes %}{% endblock %}
+    </head>
+    <body>
+      <div>
+        <span>{{user.nickname}}</span>
+        <span><a href="/settings">Settings</a></span>
+        <span><a href="/logout">Log Out</a></span>
+      </div>
+        <div>
+          {% block content %}{% endblock %}
+    </body>
+</html>
+

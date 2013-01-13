@@ -1,0 +1,18 @@
+{% extends "base-authenticated.html" %}
+{% block content %}
+<div>
+  {% if user.get_fields() %}
+  <ul>
+  {% for field in user.get_fields() %}
+  <li>{{ field.name }} </li>
+  {% endfor %}
+  </ul>
+  {% else %}
+  <div>You have no defined fields.</div>
+  {% endif %}
+  <div>
+    <a href="/createfield">Create a new Field</a>
+  </div>
+  This is where you should see all of your information.
+</div>
+{% endblock %}
